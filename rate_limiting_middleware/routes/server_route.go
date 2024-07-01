@@ -9,4 +9,5 @@ import (
 func SetupServerRoutes(e *echo.Echo) {
 	e.GET("/endpoint1", handlers.Endpoint1)
 	e.GET("/endpoint2", handlers.Endpoint2)
+	SetupRateLimitRoutes(e)
 }
