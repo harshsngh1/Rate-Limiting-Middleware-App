@@ -29,3 +29,7 @@ func SetRateLimit(c echo.Context) error {
 
 	return c.JSON(http.StatusOK, echo.Map{"message": "rate limit updated"})
 }
+
+func GetRateLimits(c echo.Context) error {
+	return c.JSON(http.StatusOK, config.RateLimiterConfig.Limits)
+}

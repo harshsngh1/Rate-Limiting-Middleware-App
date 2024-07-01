@@ -8,4 +8,5 @@ import (
 
 func SetupRateLimitRoutes(e *echo.Echo) {
 	e.POST("/set-rate-limit", handlers.SetRateLimit)
+	e.GET("/get-rate-limits", handlers.GetRateLimits)
 }
