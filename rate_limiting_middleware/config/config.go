@@ -12,7 +12,14 @@ type RateLimitConfig struct {
 }
 
 var RateLimiterConfig = &RateLimitConfig{
-	Limits: make(map[string]map[string]int),
+	Limits: map[string]map[string]int{
+		"/endpoint1": {
+			"default": 10,
+		},
+		"/endpoint2": {
+			"default": 20,
+		},
+	},
 }
 
 func (r *RateLimitConfig) SetRateLimit(endpoint string, ip string, limit int) {
