@@ -19,22 +19,26 @@ The project is structured as follows:
 rate_limiting_middleware/
 │
 ├── config/
-│ └── config.go
+│   └── config.go
 │
 ├── handlers/
-│ ├── rate_limiter_handler.go
-│ └── server_handler.go
+│   ├── rate_limiter_handler.go
+│   └── server_handler.go
 │
 ├── middleware/
-│ └── rate_limiter_middleware.go
+│   └── rate_limiter_middleware.go
 │
 ├── routes/
-│ ├── rate_limiter_route.go
-│ └── server_route.go
+│   ├── rate_limiter_route.go
+│   └── server_route.go
+│
+├── tests/
+│   └── rate_limiter_middleware_test.go
 │
 ├── go.mod
 ├── go.sum
-└── main.go
+├── main.go
+└── README.md
 
 - `handlers/`: Contains the request handlers for each API endpoint.
 - `routes/`: Defines the API routes and links them to corresponding handlers.
@@ -80,10 +84,11 @@ Use the following endpoint to retrieve rate limits:
 ```curl -X GET "http://localhost:8080/get-rate-limits"```
 
 ## Testing Rate Limiting
-To test rate limiting, make multiple requests to an endpoint within a short time frame. You can also use the below command to test this.
+To test rate limiting, make multiple requests to an endpoint within a short time frame. You can also use the below command to test this manually.
 
 ```for i in {1..10}; do   curl -X GET http://localhost:8080/endpoint1   -H "X-Real-IP: 192.168.0.181"   -H "Content-Type: application/json"   -d '{"key": "value"}' &   sleep 1 &done```
 
+You can also use the test file rate_limiting_middleware_test.go to test the rate limiting
 
 ## Running via Docker
 
