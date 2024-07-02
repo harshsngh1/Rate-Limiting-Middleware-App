@@ -3,7 +3,7 @@ package config
 import "sync"
 
 type ServerConfig struct {
-	ServerAddress string
+	Port string
 }
 
 type RateLimitConfig struct {
@@ -49,6 +49,6 @@ func (r *RateLimitConfig) GetRateLimit(endpoint string, ip string) (int, bool) {
 
 func LoadConfig() ServerConfig {
 	return ServerConfig{
-		ServerAddress: "localhost:8080",
+		Port: ":8080",
 	}
 }

@@ -14,6 +14,6 @@ func main() {
 	e := echo.New()
 	e.Use(middleware.RateLimitMiddleware)
 	routes.SetupServerRoutes(e)
-	log.Printf("Server starting on %s", cfg.ServerAddress)
-	e.Logger.Fatal(e.Start(cfg.ServerAddress))
+	log.Printf("Server starting on %s", cfg.Port)
+	e.Logger.Fatal(e.Start(cfg.Port))
 }
