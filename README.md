@@ -10,7 +10,8 @@ This project implements a rate limiting middleware using Go and the Echo framewo
 
 - Language: Go
 - Framework: Echo (chosen for its simplicity, performance, and ease of use)
-- Database: SQLite (intended for future use as a lightweight and easy-to-setup solution)
+- Database: SQLite (intended for future use as a lightweight and easy-to-setup solution), currently a map is used to make
+            the code simpler and faster
 
 ## Project Structure
 
@@ -38,6 +39,7 @@ rate_limiting_middleware/
 ├── go.mod
 ├── go.sum
 ├── main.go
+├── Dockerfile
 └── README.md
 
 - `handlers/`: Contains the request handlers for each API endpoint.
