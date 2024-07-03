@@ -1,6 +1,7 @@
 package tests
 
 import (
+	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"rate_limiting_middleware/config"
@@ -51,17 +52,20 @@ func TestDynamicRateLimitChange(t *testing.T) {
 
 	req := httptest.NewRequest(http.MethodGet, "/endpoint1", nil)
 	req.Header.Set("X-Real-IP", "192.168.0.1")
-	rec := httptest.NewRecorder()
 
 	// First 5 requests should pass
 	for i := 0; i < 5; i++ {
+		rec := httptest.NewRecorder()
 		e.ServeHTTP(rec, req)
-		assert.Equal(t, http.StatusOK, rec.Code)
+		assert.Equal(t, http.StatusOK, rec.Code, "Expected status OK but got %v on request %d", rec.Code, i+1)
+		fmt.Printf("Request %d: Status code %v\n", i+1, rec.Code)
 	}
 
 	// 6th request should be rate limited
+	rec := httptest.NewRecorder()
 	e.ServeHTTP(rec, req)
-	assert.Equal(t, http.StatusTooManyRequests, rec.Code)
+	fmt.Printf("Request 6: Status code %v, Body: %v\n", rec.Code, rec.Body.String())
+	assert.Equal(t, http.StatusTooManyRequests, rec.Code, "Expected status TooManyRequests but got %v on 6th request", rec.Code)
 }
 
 func TestDifferentIPAddresses(t *testing.T) {
