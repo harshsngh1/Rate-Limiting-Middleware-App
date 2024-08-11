@@ -54,7 +54,7 @@ rate_limiting_middleware/
 
 1. Clone the repository:
 
-    https://github.com/harshsngh1/Zocket_Rate_Limiting_Middleware
+    https://github.com/harshsngh1/Rate-Limiting-Middleware-App
 
 2. Navigate to the project directory:
 
