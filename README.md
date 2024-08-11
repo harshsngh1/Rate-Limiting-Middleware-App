@@ -1,4 +1,4 @@
-# Zocket_Rate_Limiting_Middleware
+# Rate_Limiting_Middleware
 
 This is a simple rate-limiting-middleware written in Golang
 
